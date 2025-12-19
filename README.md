@@ -4,7 +4,7 @@
 
 This is a Java application that can be used to track cheeses being aged in a facility.
 
-For more information about the CheECSEManager application, please consult the [wiki](../../wiki).
+This was developed during the Fall 2025 ECSE223 Course at McGill University.
 
 ## Team Members
 
