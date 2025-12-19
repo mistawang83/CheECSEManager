@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import ca.mcgill.ecse.cheecsemanager.fxml.layout.DetailView?>
+<?import ca.mcgill.ecse.cheecsemanager.fxml.layout.ItemPanel?>
+
+<HBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" spacing="8.0"
+	  fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.farmer.FarmerDisplayOneController">
+	<children>
+		<ItemPanel alignment="TOP_CENTER">
+			<children>
+				<Label text="Farmer Information" styleClass="text-panel-heading" />
+				<ScrollPane maxWidth="400" fitToWidth="true" fitToHeight="true">
+					<content>
+						<DetailView hgap="12.0" vgap="12.0" maxWidth="400" fx:id="detailView" styleClass="grid-pane">
+							<padding>
+								<Insets top="16" bottom="16"/>
+							</padding>
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35" prefWidth="100" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="65" prefWidth="100" />
+							</columnConstraints>
+							<!-- Added Programmatically -->
+						</DetailView>
+					</content>
+				</ScrollPane>
+			</children>
+		</ItemPanel>
+		<ItemPanel alignment="TOP_CENTER">
+			<children>
+				<Label text="Cheese Supplied" styleClass="text-panel-heading" />
+				<ScrollPane maxWidth="400" fitToWidth="true" fitToHeight="true">
+					<content>
+                        <TilePane fx:id="cheeseView" hgap="24" vgap="24" prefColumns="4" />
+					</content>
+				</ScrollPane>
+			</children>
+		</ItemPanel>
+	</children>
+</HBox>

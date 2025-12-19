@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="12" alignment="CENTER_LEFT"
+      fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.robotstatus.RobotStatusLogDisplayController">
+    <children>
+        <TableView fx:id="tableLogs" prefHeight="400" prefWidth="600">
+            <columns>
+                <TableColumn fx:id="columnDescription" text="Description" prefWidth="580" styleClass="table-column" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>

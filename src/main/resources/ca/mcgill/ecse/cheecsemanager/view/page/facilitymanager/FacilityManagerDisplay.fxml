@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import ca.mcgill.ecse.cheecsemanager.fxml.layout.ItemPanel?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:id="parentContainer"
+      fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.facilitymanager.FacilityManagerDisplayController" spacing="16"
+      VBox.vgrow="ALWAYS"
+      alignment="TOP_CENTER">
+
+    <ItemPanel hgap="10" vgap="10" fx:id="mainPanel" alignment="CENTER" >
+        <children>
+            <Label text="Facility Manager Dashboard" 
+            styleClass="text-panel-heading" 
+            style="-fx-text-fill: #e92323ff;"/>
+            <Button fx:id="viewAccountButton" text="View Account" onAction="#onViewAccount" style="-fx-text-fill: #3013f2ff;"/>
+            <Button fx:id="updateAccountButton" text="Update Account" onAction="#onUpdateAccount" style="-fx-text-fill: #3013f2ff;"/>
+            <Button fx:id="settingsButton" text="Settings" onAction="#onSettings" style="-fx-text-fill: #3013f2ff;"/>
+        </children>
+    </ItemPanel>
+    <VBox fx:id="childContainer" VBox.vgrow="ALWAYS" />
+</VBox>

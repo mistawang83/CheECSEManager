@@ -1,0 +1,37 @@
+/* Toggle Button for Theme Switching */
+.theme-toggle {
+    -fx-background-color: -fx-color-background-secondary;
+    -fx-text-fill: -fx-color-text;
+    -fx-border-color: -fx-color-border;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+    -fx-font-weight: 600;
+    -fx-padding: 8px 16px;
+    -fx-min-width: 60px;
+}
+
+.theme-toggle:hover {
+    -fx-background-color: -fx-color-hover;
+    -fx-border-color: -fx-color-accent-1;
+}
+
+.theme-toggle:selected {
+    -fx-background-color: -fx-color-accent-1;
+    -fx-text-fill: -fx-color-accent-2;
+    -fx-border-color: -fx-color-accent-1;
+}
+
+.theme-toggle:selected:hover {
+    -fx-background-color: -fx-color-accent-1-hover;
+    -fx-border-color: -fx-color-accent-1-hover;
+}
+
+/* Settings specific styles */
+.settings-title {
+    -fx-text-fill: -fx-color-text;
+}
+
+.settings-section {
+    -fx-max-width: 600px;
+}

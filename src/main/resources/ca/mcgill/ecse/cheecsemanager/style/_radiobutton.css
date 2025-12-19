@@ -1,0 +1,38 @@
+.radio-button {
+    -fx-padding: 5 0 5 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: -fx-color-text;
+    /* GitHub text color */
+    -fx-font-size: 13px;
+}
+
+.radio-button .radio {
+    -fx-background-color: -fx-color-background-secondary;
+    -fx-border-color: -fx-color-border;
+    /* GitHub light gray border */
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 0;
+    -fx-pref-width: 16px;
+    -fx-pref-height: 16px;
+}
+
+.radio-button:hover .radio {
+    -fx-border-color: -fx-color-accent-1;
+    /* GitHub blue on hover */
+    -fx-cursor: hand;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: -fx-color-accent-1;
+    -fx-background-color: -fx-color-background-secondary;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: -fx-color-accent-1;
+    -fx-background-radius: 50%;
+    -fx-scale-x: 0.5;
+    -fx-scale-y: 0.5;
+}

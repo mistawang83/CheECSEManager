@@ -1,0 +1,20 @@
+.breadcrumb {
+    -fx-background-color: transparent;
+}
+
+.breadcrumb .button {
+    -fx-background-color: -fx-color-background;
+    -fx-border-color: -fx-color-accent-1;
+    -fx-text-fill: -fx-color-accent-1;
+    -fx-font-size: 9px;
+    /* Reduced to ~75% of previous (12px) */
+    -fx-padding: 6 16 6 16;
+    /* Adjust vertical padding proportionally */
+    -fx-font-weight: 600;
+}
+
+.breadcrumb .button:hover {
+    -fx-background-color: -fx-color-color-hover;
+    -fx-border-color: -fx-color-accent-1-hover;
+    -fx-underline: true;
+}

@@ -1,0 +1,9 @@
+.shelf-cheese-grid {
+    -fx-padding: 10;
+}
+
+.shelf-cheese-grid .shelf-cell {
+    -fx-background-color: -fx-tab-border-color;
+    -fx-background-radius: 8px;
+
+}

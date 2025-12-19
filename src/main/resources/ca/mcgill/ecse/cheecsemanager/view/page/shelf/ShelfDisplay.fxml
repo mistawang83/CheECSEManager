@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import ca.mcgill.ecse.cheecsemanager.fxml.layout.ItemPanel?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:id="parentContainer"
+      fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.shelf.ShelfDisplayController" spacing="16"
+      VBox.vgrow="ALWAYS">
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <children>
+            <!-- Shelf dashboard -->
+            <ItemPanel fx:id="shelfDashboard" alignment="TOP_CENTER" prefWidth="300" styleClass="dashboard-panel">
+                <children>
+                    <Label text="Shelf Options" styleClass="text-panel-heading"/>
+                    <Button fx:id="buttonAdd" text="Add Shelf" onAction="#onAdd" styleClass="add-button">
+                    <graphic>
+                        <ImageView fitHeight="16" fitWidth="16" preserveRatio="true">
+                            <Image url="@../../../image/add.png"/>
+                        </ImageView>
+                    </graphic>
+                    </Button>
+                </children>
+            </ItemPanel>
+            <!-- Other container -->
+            <VBox fx:id="childContainer" VBox.vgrow="ALWAYS" />
+        </children>
+    </HBox>
+</VBox>

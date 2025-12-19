@@ -1,0 +1,33 @@
+.root {
+    /* Dark theme dynamic tokens */
+    -fx-color-background: #0e1011;
+    -fx-color-background-secondary: #101316;
+    -fx-color-hover: #212830;
+    -fx-color-text: #d9e2eb;
+    -fx-color-text-secondary: #8b949e;
+    -fx-color-border: #00050a;
+
+    /* Tab colors */
+    -fx-tab-background-color: #212830;
+    -fx-tab-background-down-color: #1c232c;
+    -fx-tab-border-color: #27364b;
+}
+
+/* Collapsed tab icon style */
+.tab-icon {
+    -fx-font-size: 12px; font-size: 12px;
+    -fx-padding: 0 6 0 6; padding: 0 6px;
+    -fx-font-weight: bold; font-weight: bold;
+}
+
+/* Collapsed tabs: shrink header to icon size */
+.tabs-collapsed *.tab-header-area *.tab {
+    -fx-padding: 0 4 0 4; padding: 0 4px;
+}
+.tabs-collapsed *.tab-header-area *.tab-label {
+    -fx-padding: 0; padding: 0; /* remove text padding */
+    -fx-content-display: graphic-only; /* ensure only icon shows */
+}
+.tabs-collapsed *.tab-header-area *.tab .graphic {
+    -fx-padding: 4; padding: 4px; /* small breathing room around the icon */
+}

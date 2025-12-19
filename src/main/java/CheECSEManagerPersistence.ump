@@ -1,0 +1,92 @@
+class CheECSEManager {
+  /**
+   * Rebuilds all static maps and resets autounique counters after loading from JSON.
+   */
+  public void reinitialize() {
+    // 1. Reinit UNIQUE attributes (static maps)
+    Shelf.reinitializeUniqueId(getShelves());
+    WholesaleCompany.reinitializeUniqueName(getCompanies());
+
+    // For Users, gather all subtypes
+    List<User> allUsers = new ArrayList<User>();
+    allUsers.addAll(getFarmers());
+    if (getManager() != null) {
+      allUsers.add(getManager());
+    }
+    User.reinitializeUniqueEmail(allUsers);
+
+    // 2. Reinit AUTOUNIQUE attributes (static counters)
+    Transaction.reinitializeAutouniqueID(getTransactions());
+    CheeseWheel.reinitializeAutouniqueID(getCheeseWheels());
+
+    // ShelfLocations come from shelves
+    List<ShelfLocation> allLocations = new ArrayList<ShelfLocation>();
+    for (Shelf shelf : getShelves()) {
+      allLocations.addAll(shelf.getLocations());
+    }
+    ShelfLocation.reinitializeAutouniqueID(allLocations);
+  }
+}
+
+// ------------------------------------
+// UNIQUE Reinitializers (static maps)
+// ------------------------------------
+class User {
+  public static void reinitializeUniqueEmail(List<User> users) {
+    usersByEmail.clear();
+    for (var user : users) {
+      usersByEmail.put(user.getEmail(), user);
+    }
+  }
+}
+
+class Shelf {
+  public static void reinitializeUniqueId(List<Shelf> shelves) {
+    shelfsById.clear();
+    for (var shelf : shelves) {
+      shelfsById.put(shelf.getId(), shelf);
+    }
+  }
+}
+
+class WholesaleCompany {
+  public static void reinitializeUniqueName(List<WholesaleCompany> companies) {
+    wholesalecompanysByName.clear();
+    for (var comp : companies) {
+      wholesalecompanysByName.put(comp.getName(), comp);
+    }
+  }
+}
+
+// ------------------------------------
+// AUTOUNIQUE Reinitializers (counters)
+// ------------------------------------
+class Transaction {
+  public static void reinitializeAutouniqueID(List<Transaction> transactions) {
+    nextId = 0;
+    for (var trans : transactions) {
+      if (trans.getId() > nextId) nextId = trans.getId();
+    }
+    nextId++;
+  }
+}
+
+class CheeseWheel {
+  public static void reinitializeAutouniqueID(List<CheeseWheel> wheels) {
+    nextId = 0;
+    for (var wheel : wheels) {
+      if (wheel.getId() > nextId) nextId = wheel.getId();
+    }
+    nextId++;
+  }
+}
+
+class ShelfLocation {
+  public static void reinitializeAutouniqueID(List<ShelfLocation> locations) {
+    nextId = 0;
+    for (var loc : locations) {
+      if (loc.getId() > nextId) nextId = loc.getId();
+    }
+    nextId++;
+  }
+}

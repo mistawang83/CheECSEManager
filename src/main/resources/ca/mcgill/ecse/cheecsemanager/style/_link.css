@@ -1,0 +1,7 @@
+.hyperlink {
+    -fx-text-fill: -fx-color-accent-1;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: -fx-color-accent-1-hover;
+}

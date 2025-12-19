@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="24" alignment="TOP_CENTER"
+      fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.robotstatus.RobotStatusDisplayController">
+    <padding>
+        <Insets top="24" bottom="24" left="24" right="24" />
+    </padding>
+    <children>
+        <HBox spacing="8" alignment="CENTER" minWidth="300">
+            <children>
+                <Text styleClass="text-panel-heading" text="Robot is" />
+                <Text fx:id="textStatus" styleClass="text-panel-heading-accent" />
+            </children>
+        </HBox>
+        <!-- Panel 1: Robot activation & navigation -->
+        <HBox fx:id="panelActivation" spacing="12" alignment="CENTER" minWidth="300"
+              style="-fx-padding:16; -fx-background-color: -fx-color-background-secondary; -fx-border-color: -fx-color-border; -fx-border-radius:6px; -fx-background-radius:6px;">
+            <children>
+                <!-- Set same prefWidth for both buttons -->
+                <Button fx:id="buttonActivateToggle" text="Activate" onAction="#onToggleActivate" styleClass="add-button" prefWidth="200" />
+                <Button fx:id="buttonInitRobot" text="Control Panel" onAction="#onGoToControl" styleClass="edit-button" prefWidth="200" />
+            </children>
+        </HBox>
+        <!-- Panel 2: Logs -->
+        <HBox fx:id="panelLogs" spacing="12" alignment="CENTER" minWidth="300"
+              style="-fx-padding:16; -fx-background-color: -fx-color-background-secondary; -fx-border-color: -fx-color-border; -fx-border-radius:6px; -fx-background-radius:6px;">
+            <children>
+                <Button fx:id="buttonViewLogs" text="View Logs" onAction="#onViewLogs" styleClass="button" />
+            </children>
+        </HBox>
+    <Text fx:id="textError" styleClass="text-error error-text" />
+    </children>
+</VBox>

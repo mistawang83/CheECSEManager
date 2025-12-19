@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.settings.SettingsDisplayController"
+      spacing="16"
+      alignment="TOP_CENTER">
+    
+    <padding>
+        <Insets top="24" bottom="24" left="24" right="24"/>
+    </padding>
+    
+    <children>
+        <!-- Settings Title -->
+        <Label text="Application Settings" styleClass="settings-title" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #292cedff;"/>
+        
+        <!-- Theme Section -->
+        <VBox spacing="12" styleClass="settings-section" style="-fx-padding: 16; -fx-background-color: -fx-color-background-secondary; -fx-border-color: -fx-color-border; -fx-border-radius: 6px; -fx-background-radius: 6px;">
+            <children>
+                <Label text="Theme" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Choose the application theme" style="-fx-font-size: 13px; -fx-text-fill: -fx-color-text-secondary;"/>
+                
+                <!-- Theme Toggle -->
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Dark Mode:" style="-fx-font-size: 14px;"/>
+                        <ToggleButton fx:id="themeToggle" text="OFF" onAction="#onThemeToggle" styleClass="theme-toggle"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- Tab Layout Section -->
+        <VBox spacing="12" styleClass="settings-section" style="-fx-padding: 16; -fx-background-color: -fx-color-background-secondary; -fx-border-color: -fx-color-border; -fx-border-radius: 6px; -fx-background-radius: 6px;">
+            <children>
+                <Label text="Tab Layout" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Toggle between full and collapsed tab layout" style="-fx-font-size: 13px; -fx-text-fill: -fx-color-text-secondary;"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Collapsed Tabs:" style="-fx-font-size: 14px;"/>
+                        <ToggleButton fx:id="tabLayoutToggle" text="OFF" onAction="#onTabLayoutToggle" styleClass="theme-toggle"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>

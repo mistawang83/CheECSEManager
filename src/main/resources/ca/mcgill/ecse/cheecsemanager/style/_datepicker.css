@@ -1,0 +1,113 @@
+/* Styles the date picker */
+.date-picker {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.date-picker .text-field {
+    -fx-background-color: -fx-color-background-secondary;
+    -fx-border-color: -fx-color-border;
+    -fx-border-radius: 6px 0 0 6px;
+    -fx-background-radius: 6px 0 0 6px;
+    -fx-padding: 6 12 6 12;
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-color-text;
+    -fx-prompt-text-fill: -fx-color-text-secondary;
+    -fx-border-width: 1px 0 1px 1px;
+    -fx-effect: null;
+    -fx-focus-color: -fx-color-accent-1;
+    -fx-faint-focus-color: transparent;
+}
+
+.date-picker .text-field:focused {
+    -fx-border-color: -fx-color-accent-1;
+    -fx-background-color: -fx-color-background-secondary;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: -fx-color-background-secondary;
+    -fx-border-color: -fx-color-border;
+    -fx-border-radius: 0 6px 6px 0;
+    -fx-background-radius: 0 6px 6px 0;
+    -fx-border-width: 1px 1px 1px 0;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-border-color: -fx-color-background-secondary;
+    -fx-background-color: -fx-color-hover;
+}
+
+.date-picker .arrow {
+    -fx-background-color: -fx-color-text-secondary;
+}
+
+.date-picker:focused,
+.date-picker:focused .text-field,
+.date-picker:focused .arrow-button {
+    -fx-border-color: -fx-color-accent-1;
+    -fx-background-color: -fx-color-background-secondary;
+}
+
+/* Style the popup calendar */
+.date-picker-popup {
+    -fx-background-color: -fx-color-background-secondary;
+    -fx-border-color: -fx-color-border;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-effect: dropshadow(gaussian, -fx-color-border, 8, 0, 0, 2);
+    -fx-padding: 8;
+}
+
+/* Style the calendar grid */
+.date-picker-popup .calendar-grid {
+    -fx-background-color: transparent;
+}
+
+/* Style the day cells */
+.date-picker-popup .day-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-color-text;
+    -fx-font-size: 14px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: -fx-color-hover;
+}
+
+.date-picker-popup .day-cell:selected,
+.date-picker-popup .day-cell:focused {
+    -fx-background-color: -fx-color-accent-1;
+    -fx-text-fill: -fx-color-text;
+}
+
+.date-picker-popup .day-cell {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+}
+
+/* Style the header (month/year and arrows) */
+.date-picker-popup .month-year-pane {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-color-text;
+}
+
+.date-picker-popup .month-year-pane .left-button,
+.date-picker-popup .month-year-pane .right-button {
+    -fx-background-color: -fx-color-background-secondary;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 4px;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-effect: null;
+    -fx-padding: 4 8 4 8;
+    -fx-background-insets: 0;
+}

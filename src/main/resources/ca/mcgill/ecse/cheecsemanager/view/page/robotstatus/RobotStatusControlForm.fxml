@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="16" alignment="TOP_CENTER" fillWidth="true" fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.robotstatus.RobotStatusControlFormController">
+    <children>
+        <!-- Panel: Robot status indicator -->
+        <HBox fx:id="statusPanel" spacing="12" alignment="TOP_CENTER" maxWidth="Infinity" minWidth="300">
+            <children>
+                <VBox styleClass="robot-panel" spacing="12" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="textStatus" styleClass="text-status" />
+                        <Label fx:id="labelCurrentShelf" styleClass="text-normal" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <!-- Panel: Uninitialized robot controls -->
+        <HBox fx:id="uninitializedButtons" spacing="12" alignment="CENTER_LEFT" styleClass="robot-panel" maxWidth="Infinity" minWidth="300">
+            <children>
+                <Button fx:id="buttonInitialize" text="Initialize" onAction="#onInitialize" styleClass="add-button" />
+                <ComboBox fx:id="initInputShelfId" prefWidth="160" HBox.hgrow="ALWAYS" />
+            </children>
+        </HBox>
+        <!-- Panel: Initialized robot controls (inner VBoxes styled individually) -->
+        <HBox fx:id="initializedButtons" spacing="12" alignment="TOP_CENTER" maxWidth="Infinity" minWidth="300">
+            <children>
+                <VBox spacing="16" alignment="TOP_LEFT" styleClass="robot-panel" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="Auto-Treatment" styleClass="text-panel-heading" />
+                        <HBox spacing="8" maxWidth="Infinity">
+                            <children>
+                                <Label fx:id="labelPurchaseId" minWidth="100" text="Purchase Id" styleClass="text-normal" />
+                                <ComboBox fx:id="inputPurchaseId" prefWidth="160" HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+                        <HBox spacing="8" maxWidth="Infinity">
+                            <children>
+                                <Label fx:id="labelShelfId" minWidth="100" text="Months Aged" styleClass="text-normal" />
+                                <ChoiceBox fx:id="choiceBoxMonthsAged" maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+                        <Button fx:id="buttonTreatmentProtocol" text="Trigger Cheese Treatment" onAction="#onTreatmentProtocol" styleClass="edit-button" />
+                    </children>
+                </VBox>
+                <VBox spacing="16" alignment="TOP_LEFT" styleClass="robot-panel" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="Manual Treatment" styleClass="text-panel-heading" />
+                        <HBox alignment="CENTER_LEFT" spacing="8" maxWidth="Infinity">
+                            <children>
+                                <Button fx:id="buttonTurnLeft" text="Turn Left" onAction="#onTurnLeft" styleClass="button" />
+                                <Button fx:id="buttonTurnRight" text="Turn Right" onAction="#onTurnRight" styleClass="button" />
+                            </children>
+                        </HBox>
+                        <HBox spacing="8" maxWidth="Infinity">
+                            <children>
+                                <ComboBox fx:id="moveInputShelfId" prefWidth="160" HBox.hgrow="ALWAYS" />
+                                <Button fx:id="buttonMoveShelf" text="Move To Shelf" onAction="#onMoveShelf" styleClass="edit-button" />
+                            </children>
+                        </HBox>
+                        <HBox spacing="8" maxWidth="Infinity">
+                            <children>
+                                <ComboBox fx:id="cheeseInputShelfId" prefWidth="160" HBox.hgrow="ALWAYS" />
+                                <Button fx:id="buttonMoveCheese" text="Move To Cheese" onAction="#onMoveToCheese" styleClass="edit-button" />
+                            </children>
+                        </HBox>
+                        <Button fx:id="buttonTreatCheese" text="Treat Cheese" onAction="#onTreatCheese" styleClass="edit-button" />
+                        <Button fx:id="buttonReturnEntrance" text="Return to Entrance" onAction="#onReturnEntrance" styleClass="button" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <!-- Panel Logs -->
+        <HBox fx:id="panelLogs" spacing="12" alignment="CENTER" minWidth="300" maxWidth = "300"
+              style="-fx-padding:16; -fx-background-color: -fx-color-background-secondary; -fx-border-color: -fx-color-border; -fx-border-radius:6px; -fx-background-radius:6px;">
+            <children>
+                <HBox alignment="CENTER" maxWidth="300">
+                    <Button fx:id="buttonViewLogs" text="View Logs" onAction="#onViewLogs" styleClass="button" />
+                </HBox>
+            </children>
+        </HBox>
+        <Text fx:id="textError" styleClass="error-text" />
+        <HBox fx:id="bottomPanel" maxWidth="Infinity" minWidth="300">
+            <children>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets top="24" bottom="24" left="24" right="24" />
+    </padding>
+</VBox>

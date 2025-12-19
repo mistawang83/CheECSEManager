@@ -1,0 +1,85 @@
+/* Tab View */
+.root {
+
+    -fx-tab-border-selected-color: #2188ff;
+}
+
+.tab-pane {
+    -fx-tab-min-width: 100px;
+    -fx-tab-max-width: 200px;
+    -fx-tab-min-height: 32px;
+    -fx-background-color: -fx-color-background;
+    -fx-border-color: -fx-tab-border-color;
+    -fx-border-width: 1px 0 0 0;
+}
+
+.tab {
+    -fx-background-color: -fx-color-background;
+    -fx-text-base-color: -fx-color-text;
+    -fx-border-color: transparent transparent -fx-tab-border-color transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-font-weight: 600;
+    -fx-padding: 6px 16px;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
+    -fx-font-size: 13px;
+}
+
+/* Collapsed mode: make tabs fit icon size */
+.tab-pane.tabs-collapsed {
+    -fx-tab-min-width: 50px;
+    -fx-tab-max-width: 60px;
+}
+
+.tab-pane.tabs-collapsed .tab .tab-label {
+    -fx-padding: 20px 20px;
+}
+
+
+.tab:hover {
+    -fx-background-color: -fx-tab-background-color;
+    -fx-cursor: hand;
+}
+
+.tab:selected,
+.tab:selected:focused {
+    -fx-text-base-color: -fx-color-text;
+    -fx-border-color: transparent transparent -fx-tab-border-selected-color transparent;
+    -fx-border-width: 0 0 2px 0;
+    -fx-font-weight: 700;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.tab-header-background {
+    -fx-background-color: -fx-color-background;
+    -fx-border-color: -fx-tab-border-color;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.tab .tab-close-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/* Tab Expand Button */
+.tab-pane .tab-down-button {
+    -fx-background-color: -fx-color-background;
+    -fx-pref-height: 42px;
+    -fx-background-radius: 0 0 0 0;
+    -fx-padding: 6px 16px;
+}
+
+.tab-pane .tab-down-button:hover {
+    -fx-background-color: -fx-color-hover;
+}
+
+.tab-pane .tab-down-button .arrow {
+    -fx-background-color: -fx-color-text;
+}
+
+.tab-pane .tab-down-button:hover .arrow {
+    -fx-background-color: -fx-color-text;
+}

@@ -1,0 +1,86 @@
+/* Table background and border */
+.table-view {
+    -fx-background-color: -fx-color-background;
+    -fx-background-radius: 6px;
+    -fx-table-cell-border-color: -fx-color-border;
+    -fx-padding: 0;
+}
+
+/* Header styling */
+.table-view .column-header-background {
+    -fx-background-color: -fx-color-background;
+    -fx-border-color: -fx-color-border;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view .label {
+    -fx-text-fill: -fx-color-text;
+    -fx-font-weight: 600;
+    -fx-font-size: 13px;
+}
+
+/* Row styling */
+.table-row-cell {
+    -fx-background-color: -fx-color-background-secondary;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 0 0 0 0;
+    -fx-background-insets: 2 0 2 0;
+    -fx-background-radius: 6;
+}
+
+/*.table-row-cell:odd {*/
+/*    -fx-background-color: #f6f8fa;*/
+/*}*/
+
+.table-row-cell:selected,
+.table-row-cell:hover,
+.table-row-cell:focused:selected {
+    -fx-background-color: -fx-color-hover;
+    -fx-text-fill: -fx-color-text;
+}
+
+/* Cell styling */
+.table-cell {
+    -fx-padding: 8px 12px;
+    -fx-text-fill: -fx-color-text;
+    -fx-font-size: 12px;
+    -fx-border-color: transparent;
+}
+
+.table-cell .label {
+    -fx-text-fill: -fx-color-text;
+}
+
+/* Remove focus ring */
+.table-view:focused {
+    -fx-background-insets: 0;
+    -fx-effect: null;
+}
+
+.form-label {
+    -fx-text-fill: -fx-color-text;
+}
+
+.cell-text {
+    -fx-fill: -fx-color-text-secondary;
+}
+
+.table-row-cell:empty {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header,
+.table-view .column-header-background {
+    -fx-padding: 8px 12px;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: 700;
+}

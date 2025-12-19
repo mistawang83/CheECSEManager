@@ -1,0 +1,156 @@
+.button {
+    -fx-background-color: -fx-color-background;
+    /* Primer neutral background */
+    -fx-text-fill: -fx-color-text;
+    /* Primer default text */
+    -fx-border-color: -fx-color-border;
+    /* Primer border */
+    -fx-cursor: hand;
+    -fx-border-radius: 6px;
+    -fx-font-weight: 500;
+    -fx-padding: 6px 12px;
+    -fx-background-radius: 6px;
+}
+
+.button:hover {
+    -fx-background-color: -fx-color-hover;
+    -fx-text-fill: -fx-color-text;
+    -fx-border-color: -fx-color-border;
+}
+
+.button:pressed {
+    -fx-background-color: -fx-color-background-pressed;
+    -fx-text-fill: -fx-color-text;
+    -fx-border-color: -fx-color-border;
+}
+
+.delete-button {
+    -fx-background-color: -fx-color-accent-negative;
+    /* Primer danger red */
+    -fx-text-fill: -fx-color-accent-2;
+    /* White text */
+    -fx-border-color: -fx-color-accent-negative;
+}
+
+.delete-button:hover {
+    -fx-background-color: -fx-color-accent-negative-hover;
+    /* Primer danger red hover */
+    -fx-border-color: -fx-color-accent-negative-hover;
+    -fx-text-fill: -fx-color-accent-2;
+}
+
+.delete-button:pressed {
+    -fx-background-color: -fx-color-accent-negative-pressed;
+    /* Primer danger red pressed */
+    -fx-border-color: -fx-color-accent-negative-pressed;
+}
+
+.edit-button {
+    -fx-background-color: -fx-color-accent-1;
+    /* Primer blue */
+    -fx-text-fill: -fx-color-accent-2;
+    /* White text */
+    -fx-border-color: -fx-color-accent-1;
+}
+
+.edit-button:hover {
+    -fx-background-color: -fx-color-accent-1-hover;
+    /* Primer blue hover */
+    -fx-border-color: -fx-color-accent-1-hover;
+    -fx-text-fill: -fx-color-accent-2;
+}
+
+.edit-button:pressed {
+    -fx-background-color: -fx-color-accent-1-pressed;
+    /* Primer blue pressed */
+    -fx-border-color: -fx-color-accent-1-pressed;
+}
+
+.add-button {
+    -fx-background-color: -fx-color-accent-positive;
+    /* Primer success green */
+    -fx-text-fill: -fx-color-accent-2;
+    /* White text */
+    -fx-border-color: -fx-color-accent-positive;
+}
+
+.add-button:hover {
+    -fx-background-color: -fx-color-accent-positive-hover;
+    /* Primer success green hover */
+    -fx-border-color: -fx-color-accent-positive-hover;
+    -fx-text-fill: -fx-color-accent-2;
+}
+
+.add-button:pressed {
+    -fx-background-color: -fx-color-accent-positive-pressed;
+    /* Primer success green pressed */
+    -fx-border-color: -fx-color-accent-positive-pressed;
+}
+
+
+.details-button {
+    -fx-background-color: transparent;
+    /* Blue background */
+    -fx-text-fill: -fx-color-accent-1;
+    /* White text */
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-background-radius: 100%;
+    /* Perfect circle */
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-max-width: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+    -fx-border-color: -fx-color-accent-1;
+    -fx-border-radius: 100%;
+}
+
+.details-button:hover {
+    -fx-background-color: -fx-color-hover;
+    /* subtle hover bg */
+    -fx-text-fill: -fx-color-accent-1-hover;
+    /* Primer blue text */
+    -fx-border-color: -fx-color-accent-1-hover;
+    -fx-border-radius: 6px;
+}
+
+.sell-button {
+    -fx-background-color: #a42d2d;   /* Primer success red */
+    -fx-text-fill: #fff;             /* White text */
+    -fx-border-color: #a42d2d;
+}
+.sell-button:hover {
+    -fx-background-color: #7c1b1b;   /* Primer success red hover */
+    -fx-border-color: #7c1b1b;
+    -fx-text-fill: #fff;
+}
+.sell-button:pressed {
+    -fx-background-color: #da4a4a;   /* Primer success red pressed */
+    -fx-border-color: #da4a4a;
+}
+
+/* To style Single Item View */
+/* Inherits the styling of Table with additional changes */
+
+GridPane .details-button {
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-max-width: infinity;
+    /* Allow button to expand in GridPane */
+}
+
+GridPane .details-button:hover {
+    -fx-background-color: -fx-color-hover;
+    /* subtle hover bg */
+    -fx-text-fill: -fx-color-accent-1-hover;
+    /* Primer blue text */
+}
+
+GridPane .edit-button {
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-max-width: infinity;
+}

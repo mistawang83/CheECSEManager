@@ -1,0 +1,44 @@
+.text-field {
+    -fx-background-color: -fx-color-background-secondary;
+    -fx-border-color: -fx-color-border;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 6 12 6 12;
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-color-text;
+    -fx-prompt-text-fill: -fx-color-text-secondary;
+    -fx-border-width: 1px;
+    -fx-effect: null;
+    -fx-focus-color: -fx-color-accent-1;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-field:hover {
+    -fx-border-color: -fx-color-border;
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-color-accent-1;
+    -fx-background-color: -fx-color-background;
+}
+
+.obscured-label {
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.obscured-text {
+    -fx-text-fill: -fx-color-text-secondary;
+}
+
+.reveal-button {
+    -fx-background-color: -fx-color-accent-1;
+    -fx-border-color: -fx-color-accent-1;
+    -fx-border-radius: 4px;
+    -fx-margins: 0 0 0 0;
+    -fx-max-width: 25px;
+    -fx-min-width: 25px;
+    -fx-min-height: 20px;
+    -fx-max-height: 20px;
+
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import ca.mcgill.ecse.cheecsemanager.fxml.layout.ItemPanel?>
+<?import ca.mcgill.ecse.cheecsemanager.fxml.controller.shelf.ShelfCheeseGrid?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.shelf.ShelfDisplayOneController" spacing="16" alignment="TOP_CENTER">
+    <children>
+        <HBox spacing="16" alignment="TOP_CENTER">
+            <children>
+                <ItemPanel fx:id="shelfInfoPanel" alignment="TOP_CENTER" hgap="8" vgap="8">
+                    <children>
+                        <Label text="Shelf Details" styleClass="text-panel-heading" />
+                        <Label fx:id="labelShelfId" styleClass="text-normal"/>
+                        <Label fx:id="labelMaxColumns"  styleClass="text-normal"/>
+                        <Label fx:id="labelMaxRows" styleClass="text-normal"/>
+                    </children>
+                </ItemPanel>
+                <ItemPanel fx:id="cheeseGridPanel" alignment="CENTER" hgap="8" vgap="8">
+                    <children>
+                        <Label text="Cheese Layout" styleClass="text-panel-heading" />
+                        <ShelfCheeseGrid fx:id="cheeseGrid"/>
+                    </children>
+                </ItemPanel>
+            </children>
+        </HBox>
+
+    </children>
+    <padding>
+        <Insets top="16" bottom="16" left="16" right="16" />
+    </padding>
+</VBox>

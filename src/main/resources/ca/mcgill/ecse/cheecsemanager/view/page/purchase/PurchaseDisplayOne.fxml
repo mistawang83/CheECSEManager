@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+	fx:controller="ca.mcgill.ecse.cheecsemanager.fxml.controller.purchase.PurchaseDisplayOneController"
+	spacing="16"
+    VBox.vgrow="ALWAYS">
+    <children>
+        <GridPane fx:id="gridPane" vgap="8" hgap="12" VBox.vgrow="ALWAYS">
+            <!-- Populated programmatically -->
+        </GridPane>
+    </children>
+</VBox>

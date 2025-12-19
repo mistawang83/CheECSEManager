@@ -1,0 +1,62 @@
+.vbox-custom {
+    -fx-background-color: -fx-color-background;
+}
+
+/* Scroll Pane Styling */
+
+.scroll-pane {
+    -fx-background: -fx-color-background-secondary;
+    /* Removes border when out of focus */
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.scroll-pane:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Scrollbar Styling */
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 7px;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 6px;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -fx-color-background;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+    -fx-background-radius: 4px;
+}
+
+/* Hide Scrollbar arrows */
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: transparent;
+}
+
+/* Hide Scrollbar button behind arrows */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    /* Arrow color */
+}
+
+.text-field-display {
+    -fx-fill: -fx-color-text-secondary;
+    -fx-border-color: -fx-color-text-secondary;
+}
+
+.separator .line {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-tab-border-color;
+}

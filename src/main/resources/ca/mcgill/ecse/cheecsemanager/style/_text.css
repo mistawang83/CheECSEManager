@@ -1,0 +1,61 @@
+/* StackPane is used because there is no selectable class available for SpackPane */
+/* Adding manual classes adds too much boilerplate code */
+/* Style for the Text node */
+
+/* Make the StackPane look like a text field */
+.grid-pane StackPane {
+    -fx-border-color: -fx-color-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-color: transparent;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10 6 10;
+    /* Top, Right, Bottom, Left */
+    -fx-alignment: center-left;
+}
+
+.error-text {
+    -fx-text-fill: -fx-color-accent-negative;
+    -fx-fill: -fx-color-accent-negative;
+}
+
+/* Inherits default Stackpane style */
+/* Style Hyperlinks */
+.grid-pane .hyperlink-container {
+    -fx-border-style: dashed;
+    -fx-border-color: -fx-color-accent-1;
+}
+
+.grid-pane .hyperlink-container .hyperlink {
+    -fx-text-fill: -fx-color-accent-1-pressed;
+}
+
+.grid-pane .hyperlink-container .hyperlink:focused {
+    -fx-border-color: transparent;
+}
+
+.text-normal {
+    -fx-text-fill: -fx-color-text;
+    -fx-fill: -fx-color-text;
+}
+
+.text-status {
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-fill: -fx-color-accent-1-pressed;
+    -fx-text-fill: -fx-color-accent-1-pressed;
+}
+
+.text-panel-heading,
+.text-panel-heading-accent {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-color-text;
+    -fx-fill: -fx-color-text;
+    -fx-padding: 0 0 16 0;
+}
+
+.text-panel-heading-accent {
+    -fx-text-fill: -fx-color-accent-1-pressed;
+    -fx-fill: -fx-color-accent-1-pressed;
+}

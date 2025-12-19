@@ -1,0 +1,406 @@
+class Robot {
+  lazy Integer currentRow;
+  lazy Integer currentColumn;
+  
+  Status {
+    Idle {
+      initializeRobot(String aShelfId) [isValidShelfInput(aShelfId)] / {
+        doInitializeRobot(aShelfId);
+      } -> AtEntranceNotFacingAisle;
+      treatPurchase() / {
+        rejectTreatmentBeforeInitialize();
+      } -> Idle;
+      turnLeft() / {
+        rejectTurnLeft();
+      } -> Idle;
+      turnRight() / {
+        rejectTurnRight();
+      } -> Idle;
+      goToShelf(String aShelfId) / {
+        rejectGoToShelf(aShelfId);
+      } -> Idle;
+      goToCheeseWheel(Integer aCheeseWheelId) / {
+        rejectGoToCheeseWheel(aCheeseWheelId);
+      } -> Idle;
+      goToEntrance() / {
+        rejectGoToEntrance();
+      } -> Idle;
+      treatCheeseWheel() / {
+        rejectTreatCheeseWheel();
+      } -> Idle;
+      deactivateRobot() -> Final;
+    }
+    AtEntranceNotFacingAisle {
+      initializeRobot(String aShelfId) / {
+        rejectInitialize(aShelfId);
+      } -> AtEntranceNotFacingAisle;
+      goToShelf(String aShelfId) [isValidShelfInput(aShelfId)] / {
+        moveToShelf(aShelfId);
+      } -> AtEntranceNotFacingAisle;
+      turnLeft() / {
+        doTurnLeft();
+      } -> AtEntranceFacingAisle;
+      turnRight() / {
+        rejectTurnRight();
+      } -> AtEntranceNotFacingAisle;
+      goToCheeseWheel(Integer aCheeseWheelId) / {
+        rejectGoToCheeseWheel(aCheeseWheelId);
+      } -> AtEntranceNotFacingAisle;
+      goToEntrance() / {
+        rejectGoToEntrance();
+      } -> AtEntranceNotFacingAisle;
+      treatCheeseWheel() / {
+        rejectTreatCheeseWheel();
+      } -> AtEntranceNotFacingAisle;
+      treatPurchase() -> AtEntranceNotFacingAisle;
+      deactivateRobot() -> Final;
+    }
+    AtEntranceFacingAisle {
+      initializeRobot(String aShelfId) / {
+        rejectInitialize(aShelfId);
+      } -> AtEntranceFacingAisle;
+      treatPurchase() / {
+        rejectTreatment();
+      } -> AtEntranceFacingAisle;
+      turnLeft() / {
+        rejectTurnLeft();
+      } -> AtEntranceFacingAisle;
+      turnRight() / {
+        doTurnRight();
+      } -> AtEntranceNotFacingAisle;
+      goToShelf(String aShelfId) / {
+        rejectGoToShelf(aShelfId);
+      } -> AtEntranceFacingAisle;
+      goToCheeseWheel(Integer aCheeseWheelId) [isValidCheeseWheelInput(aCheeseWheelId)] / {
+        moveToCheeseWheel(aCheeseWheelId);
+      } -> AtCheeseWheel;
+      goToEntrance() / {
+        rejectGoToEntrance();
+      } -> AtEntranceFacingAisle;
+      treatCheeseWheel() / {
+        rejectTreatCheeseWheel();
+      } -> AtEntranceFacingAisle;
+      deactivateRobot() / {
+        rejectDeactivate();
+      } -> AtEntranceFacingAisle;
+    }
+    AtCheeseWheel {
+      initializeRobot(String aShelfId) / {
+        rejectInitialize(aShelfId);
+      } -> AtCheeseWheel;
+      treatPurchase() / {
+        rejectTreatment();
+      } -> AtCheeseWheel;
+      turnLeft() / {
+        rejectTurnLeft();
+      } -> AtCheeseWheel;
+      turnRight() / {
+        rejectTurnRight();
+      } -> AtCheeseWheel;
+      goToShelf(String aShelfId) / {
+        rejectGoToShelf(aShelfId);
+      } -> AtCheeseWheel;
+      goToCheeseWheel(Integer aCheeseWheelId) [isValidCheeseWheelInput(aCheeseWheelId)] / {
+        moveToCheeseWheel(aCheeseWheelId);
+      } -> AtCheeseWheel;
+      goToEntrance() / {
+        moveToEntrance();
+      } -> AtEntranceFacingAisle;
+      treatCheeseWheel() / {
+        doTreatCheeseWheel();
+      } -> AtCheeseWheel;
+      deactivateRobot() / {
+        rejectDeactivate();
+      } -> AtCheeseWheel;
+    }
+  }
+
+  // Helper methods implemented by Simon Wang
+  private Shelf getShelfById(String shelfId) {
+    for (Shelf shelf : cheECSEManager.getShelves()) {
+      if (shelf.getId().equals(shelfId)) {
+        return shelf;
+      }
+    }
+    return null;
+  }
+  private CheeseWheel getCheeseWheelById(int id) {
+      for (CheeseWheel cw : cheECSEManager.getCheeseWheels()) {
+        if (cw.getId() == id) {
+          return cw;
+        }
+      }
+      return null;
+  }
+
+  /**
+   * This method is a guard to make sure that an input shelfId is valid for 
+   * methods that require a shelfId input. It throws an exception if invalid.
+   * 
+   * @author Simon Wang
+   * @param aShelfId
+   */
+  private boolean isValidShelfInput(String aShelfId) {
+    if (aShelfId.equals("")) {
+      throw new RuntimeException("A shelf must be specified.");
+    } else if (getShelfById(aShelfId) == null) {
+      throw new RuntimeException("The shelf " + aShelfId + " does not exist.");
+    }
+    return true;
+  }
+
+  /**
+   * This method is an action that initializes a Robot by setting its current
+   * shelf to the input shelf ID, and setting the currentRow and currentColumn 
+   * to default values (1 and 0 respectively). Then, a log entry of the robot's
+   * current shelf is made.
+   * 
+   * @author Simon Wang
+   * @param aShelfId
+   */
+  private void doInitializeRobot(String aShelfId) {
+    Shelf aShelf = getShelfById(aShelfId);
+    setCurrentShelf(aShelf);
+    setCurrentRow(1);
+    setCurrentColumn(0);
+    logShelf();
+  }
+
+  /**
+   * This method is an action that performs a left turn. It simply creates 
+   * a log entry for a left turn.
+   * 
+   * @author Simon Wang
+   */
+  private void doTurnLeft() {
+    logTurn("left");
+  }
+
+  /**
+   * This method is an action that performs a right turn. It simply creates 
+   * a log entry for a right turn.
+   * 
+   * @author Simon Wang
+   */
+  private void doTurnRight() {
+    logTurn("right");
+  }
+
+  /**
+   * This method is an action that makes the robot move to a given shelf ID.
+   * It sets the robot's current shelf as the input shelf. It also creates a 
+   * log entry for the straight distance traveled by the robot to make the move.
+   * 
+   * @author Simon Wang
+   * @param aShelfId
+   */
+  private void moveToShelf(String aShelfId) {
+    Shelf aShelf = getShelfById(aShelfId);
+    int currentShelfIndex = cheECSEManager.indexOfShelve(this.getCurrentShelf());
+    int targetShelfIndex = cheECSEManager.indexOfShelve(aShelf);
+    int distance = (targetShelfIndex - currentShelfIndex) * 2;
+    logStraight(distance);
+    setCurrentShelf(aShelf);
+    logShelf();
+  }
+
+  /**
+   * This method is an action that makes the robot move to given cheese wheel ID.
+   * It sets the robot's current shelf as the given cheese wheel. It also creates
+   * log entry for the straight distance traveled by the robot to make the move,
+   * as well as another log entry for the height adjustement made.
+   * 
+   * @author Simon Wang
+   * @param aCheeseWheelId
+   */
+  private void moveToCheeseWheel(Integer aCheeseWheelId) {
+    CheeseWheel aCheeseWheel = getCheeseWheelById(aCheeseWheelId);
+    int colDiff = aCheeseWheel.getLocation().getColumn() - getCurrentColumn();
+    int rowDiff = aCheeseWheel.getLocation().getRow() - getCurrentRow();
+    int heightDiff = rowDiff * 40;
+    if (colDiff != 0) {
+      logStraight(colDiff);
+    }
+    if (rowDiff != 0) {
+      logHeightAdjustment(heightDiff);
+    }
+    setCurrentCheeseWheel(aCheeseWheel);
+    setCurrentRow(aCheeseWheel.getLocation().getRow());
+    setCurrentColumn(aCheeseWheel.getLocation().getColumn());
+    logCheeseWheel();
+  }
+
+  /**
+   * This method is an guard that ensures that an input cheese wheel ID is valid
+   * for all events that take a cheese wheel ID as input. It throws an exception if invalid.
+   * 
+   * @author Simon Wang
+   * @param aCheeseWheelId
+   */
+  private boolean isValidCheeseWheelInput(Integer aCheeseWheelId) {
+    CheeseWheel aCheeseWheel = getCheeseWheelById(aCheeseWheelId);
+    if (aCheeseWheel.getLocation().getShelf() != getCurrentShelf()) {
+      throw new RuntimeException("Cheese wheel #" + aCheeseWheelId + " is not on shelf #" + getCurrentShelf().getId() + ".");
+    }
+    return true;
+  }
+
+  /**
+   * This method is an action that makes the robot move to the entrance of the 
+   * shelf it is currently associated to. It logs the straight distance traveled
+   * by the robot and logs the height adjustment made.
+   * 
+   * @author Simon Wang
+   */
+  private void moveToEntrance() {
+    int colDiff = 0 - getCurrentColumn();
+    int rowDiff = 1 - getCurrentRow();
+    int heightDiff = rowDiff * 40;
+    if (colDiff != 0) {
+      logStraight(colDiff);
+    }
+    if (rowDiff != 0) {
+      logHeightAdjustment(heightDiff);
+    }
+    setCurrentRow(1);
+    setCurrentColumn(0);
+    setCurrentCheeseWheel(null);
+  }
+  /**
+   * This method is an action that makes the robot treat the current cheese wheel.
+   * It logs the action in a log entry.
+   * 
+   * @author Simon Wang
+   */
+  private void doTreatCheeseWheel() {
+    logTreatCheeseWheel();
+  }
+
+
+  // Helper methods to perform logging actions
+  private void logShelf() {
+    String description = "At shelf #" + getCurrentShelf().getId() + ";";
+    LogEntry entry = new LogEntry(description, this);
+  }
+  private void logCheeseWheel() {
+    String description = "At cheese wheel #" + getCurrentCheeseWheel().getId() + ";";
+    LogEntry entry = new LogEntry(description, this);
+  }
+  private void logStraight(int n) {
+    String plus = "";
+    if (n > 0) {
+      plus="+";
+    }
+    String description = "Straight " + plus + n + " meters;";
+    LogEntry entry = new LogEntry(description, this);
+  }
+    
+  private void logHeightAdjustment(int n) {
+    String plus = "";
+    if (n > 0) {
+      plus = "+";
+    }
+    String description = "Adjust height " + plus + n + " centimeters;";
+    LogEntry entry = new LogEntry(description, this);
+  }
+  private void logTurn(String leftOrRight) {
+    String description = "Turn " + leftOrRight + ";";
+    LogEntry entry = new LogEntry(description, this);
+  }
+  private void logTreatCheeseWheel() {
+    String description = "Treat cheese wheel #" + getCurrentCheeseWheel().getId() + ";";
+    LogEntry entry = new LogEntry(description, this);
+  }
+
+
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   * @param aShelfId
+   */
+  private void rejectInitialize(String aShelfId) {
+        throw new RuntimeException("The robot has already been initialized.");
+    }
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   */
+  private void rejectTreatment() {
+    throw new RuntimeException("The robot cannot be triggered to perform treatment again during active treatment.");
+  }
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   */
+  private void rejectTreatmentBeforeInitialize() {
+    throw new RuntimeException("The robot must be initialized first.");
+  }
+
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   */
+  private void rejectDeactivate() {
+    throw new RuntimeException("The robot cannot be deactivated during active treatment.");
+  }
+
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   */
+  private void rejectTurnLeft() {
+    throw new RuntimeException("The robot cannot be turned left.");
+  }
+
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   */
+  private void rejectTurnRight() {
+    throw new RuntimeException("The robot cannot be turned right.");
+  }
+
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   * @param aShelfId
+   */
+  private void rejectGoToShelf(String aShelfId){
+    throw new RuntimeException("The robot cannot be moved to shelf #" + aShelfId + ".");
+  }
+
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   * @param aCheeseWheelId
+   */
+  private void rejectGoToCheeseWheel(Integer aCheeseWheelId){
+    throw new RuntimeException("The robot cannot be moved to cheese wheel #" + aCheeseWheelId + ".");
+  }
+
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   */
+  private void rejectGoToEntrance(){
+    throw new RuntimeException("The robot cannot be moved to the entrance of the aisle.");
+  }
+
+  /**
+   * This method is an action that rejects the transition event.
+   * 
+   * @author Simon Wang
+   */
+  private void rejectTreatCheeseWheel(){
+    throw new RuntimeException("The robot cannot be perform treatment.");
+  }
+}

@@ -1,0 +1,32 @@
+.root {
+    /* Light theme dynamic tokens */
+    -fx-color-background: #f5f3f3;
+    -fx-color-background-secondary: #ffffff;
+    -fx-color-hover: #eaeef2;
+    -fx-color-text: #141618;
+    -fx-color-text-secondary: #57606a;
+    -fx-color-border: #d0d7de;
+
+    /* Tab colors */
+    -fx-tab-background-color: #f5f3f3;
+    -fx-tab-background-down-color: #f6f8fa;
+    -fx-tab-border-color: #d0d7de;
+}
+
+/* Collapsed tab icon style */
+.tab-icon {
+    -fx-font-size: 12px; font-size: 12px;
+    -fx-padding: 0 6 0 6; padding: 0 6px;
+    -fx-font-weight: bold; font-weight: bold;
+}
+
+/* Collapsed tabs: shrink header to icon size */
+.tabs-collapsed *.tab-header-area *.tab {
+    -fx-padding: 0 4 0 4; padding: 0 4px;
+}
+.tabs-collapsed *.tab-header-area *.tab-label {
+    -fx-padding: 0; padding: 0; /* remove text padding */
+}
+.tabs-collapsed *.tab-header-area *.tab .graphic {
+    -fx-padding: 4; padding: 4px; /* small breathing room around the icon */
+}

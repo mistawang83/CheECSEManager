@@ -1,0 +1,11 @@
+.robot-panel {
+    -fx-padding: 16;
+    padding: 16;
+    -fx-background-color: -fx-color-background-secondary;
+    background-color: -fx-color-background-secondary;
+    -fx-border-color: -fx-color-border;
+    border-color: -fx-color-border;
+    -fx-border-radius: 6px;
+    border-radius: 6px;
+    -fx-background-radius: 6px;
+}
